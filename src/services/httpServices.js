@@ -1,6 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
+// axios.defaults.baseURL will always prefix in website url
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 // .use(response success => first function, response include error => second function)

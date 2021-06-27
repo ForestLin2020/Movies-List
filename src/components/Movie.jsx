@@ -20,7 +20,6 @@ class Movies extends Component {
     movies: [],
     genres: [],
     currentPage: 1,
-    moviesPerPage: 4,
     pageSize: 4,
     searchQuery: "",
     currentGenre: null,
@@ -84,7 +83,6 @@ class Movies extends Component {
       currentGenre: genre,
       currentPage: 1,
       searchQuery: "",
-      movies: getMovies(),
     });
   };
 
@@ -104,44 +102,6 @@ class Movies extends Component {
 
   handleNewMovieSaveButton = () => {
     console.log("handleNewMovieSaveButton is clicked.");
-  };
-
-  getPageData = () => {
-    const {
-      movies: allMovies,
-      currentPage,
-      pageSize,
-      currentGenre,
-      sortColume,
-    } = this.state;
-
-    const movieSort = _.orderBy(
-      allMovies,
-      [sortColume.path],
-      [sortColume.order]
-    );
-
-    const movieGenres =
-      currentGenre && currentGenre._id
-        ? movieSort.filter((m) => m.genre._id === currentGenre._id)
-        : movieSort;
-    // const movieGenres = currentGenre.name==="All Genres" ? movieSort:movieSort.filter(m => m.genre.name == currentGenre.name );
-    // console.log('currentGenre',currentGenre);            ↑↑↑ + line24
-
-    // ======= my pagination solution ======= //
-    // const currentPage = this.state.currentPage;
-    // const moviesPerPage = this.state.moviesPerPage;
-
-    // // Get current movies
-    // const indexOfLastMovie = currentPage * moviesPerPage; // 1*4, 2*4, ...
-    // const indexOfFirstMovie = indexOfLastMovie - moviesPerPage; // 4-4, 8-4, ...
-    // const currentMovies = this.state.movies.slice(indexOfFirstMovie, indexOfLastMovie);
-
-    // console.log('currentMovies', currentMovies)
-    // ====================================== //
-    const movies = paginate(movieGenres, currentPage, pageSize);
-
-    return { movieGenres, movies };
   };
 
   handleSearch = ({ currentTarget: input }) => {
@@ -167,6 +127,39 @@ class Movies extends Component {
     });
   };
 
+  getPageData = () => {
+    const {
+      movies: allMovies,
+      currentPage,
+      pageSize,
+      currentGenre,
+      sortColume,
+      searchQuery,
+    } = this.state;
+
+    console.log("allMovies", allMovies);
+
+    const movieSort = _.orderBy(
+      allMovies,
+      [sortColume.path],
+      [sortColume.order]
+    );
+
+    console.log("movieSort", movieSort);
+
+    const movieGenres =
+      currentGenre && currentGenre._id
+        ? movieSort.filter((m) => m.genre._id === currentGenre._id)
+        : movieSort;
+
+    const movies = paginate(movieGenres, currentPage, pageSize);
+
+    return { totalCount: movieGenres.length, movies };
+  };
+
+  // movieGenres = filterd
+  // currentGenre = selectedGenre
+
   render() {
     const {
       currentPage,
@@ -179,17 +172,13 @@ class Movies extends Component {
 
     const { user } = this.props;
 
-    const { movieGenres, movies } = this.getPageData();
-
-    const count = movieGenres.length;
-
-    // if (count === 0) return <p>There are no movies in the database.</p>;
+    const { totalCount, movies } = this.getPageData();
 
     return (
       <React.Fragment>
         <div className="row">
           {/* ListGroup */}
-          <div className="col-md-3">
+          <div className="col-3">
             <ListGroup
               allGenres={genres}
               currentGenre={currentGenre}
@@ -197,14 +186,14 @@ class Movies extends Component {
             />
           </div>
           {/* Main Area */}
-          <div className="col-md-7">
+          <div className="col">
             {user && (
               <Link className="btn btn-primary" to="/movies/new">
                 New Movie
               </Link>
             )}
 
-            <p>Showing {count} movies in the database.</p>
+            <p>Showing {totalCount} movies in the database.</p>
             <Search value={searchQuery} onSearch={this.handleSearch} />
             <MovieTable
               movies={movies}
@@ -214,10 +203,8 @@ class Movies extends Component {
               onDelete={this.handleDelete}
             />
 
-            {/* // ======= my pagination solution ======= // */}
-            {/* <Pagination moviesPerPage={moviesPerPage} totalMovies={this.state.movies.length} onPaginate={this.handlePaginate} /> */}
             <Pagination
-              itemsCount={count}
+              itemsCount={totalCount}
               pageSize={pageSize}
               currentPage={currentPage}
               onPageChange={this.handlePageChange}
