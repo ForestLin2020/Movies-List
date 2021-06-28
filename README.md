@@ -1,6 +1,8 @@
 # Exploring This Application
 [MovieSList Project](https://infinite-woodland-88184.herokuapp.com/movies)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 Database is holded by MongoDB and Front-End deployment is holded by Heroku.  
 
 ## MoviesList Page
