@@ -1,25 +1,20 @@
-# Getting Started with Create React App
-
+# Exploring This Application
+[MovieSList Project](https://infinite-woodland-88184.herokuapp.com/movies)
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Database is holded by MongoDB and Front-End deployment is holded by Heroku.  
 
-## Available Scripts
+## MoviesList Page
+![image](https://user-images.githubusercontent.com/59840706/123588309-9132a580-d7b5-11eb-8664-096760549881.png)
 
-In the project directory, you can run:
+### `npm i`
 
-### `npm start`
+**Description**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This command installs a package, and any packages that it depends on. If the package has a package-lock or shrinkwrap file, the installation of dependencies will be driven by that, with an npm-shrinkwrap.json taking precedence if both files exist. See package-lock.json and npm shrinkwrap.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### `npm run build` >> `npm install -g serve` >> `serve -s build` 
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
+`npm run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -29,42 +24,46 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+`npm install -g serve` 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Serve the build folder with a static server.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`serve -s build` 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Run the deployed Website.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Deploy to Heroku
 
-## Learn More
+### `heroku create --buildpack mars/create-react-app`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Create a new app to hold project deployment.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### `git push heroku master`
 
-### Code Splitting
+Push project to heroku server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### `heroku open`
 
-### Analyzing the Bundle Size
+Open the project Front-End deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Connecting Heroku to MongoDB
 
-### Making a Progressive Web App
+### Creating a MongoDB account and Creating an user
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![image](https://user-images.githubusercontent.com/59840706/123592074-c42b6800-d7ba-11eb-9824-7b6ed4501d72.png)
 
-### Advanced Configuration
+## Connecting Heroku to MongoDB
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![image](https://user-images.githubusercontent.com/59840706/123591658-47988980-d7ba-11eb-89a4-db807d69b3a0.png)
+![image](https://user-images.githubusercontent.com/59840706/123591763-64cd5800-d7ba-11eb-896a-babdf5b8c6e3.png)
+![image](https://user-images.githubusercontent.com/59840706/123591898-8d555200-d7ba-11eb-859c-ab505260d1f1.png)
+![image](https://user-images.githubusercontent.com/59840706/123592372-284e2c00-d7bb-11eb-913e-83ba4ebd3e9b.png)
+![image](https://user-images.githubusercontent.com/59840706/123592425-3308c100-d7bb-11eb-986a-817c33206caf.png)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
