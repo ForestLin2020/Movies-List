@@ -44,7 +44,7 @@ class MovieTable extends Component {
   constructor() {
     super();
     const user = auth.getCurrentUser();
-    if (user && user.isAdmin) {
+    if (user) {
       this.columns.push(this.deleteColumn);
     }
   }
