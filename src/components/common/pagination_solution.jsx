@@ -1,6 +1,6 @@
 import React from "react";
-import _ from "lodash"; // underscore
 import PropTypes from "prop-types";
+import _ from "lodash"; // underscore
 
 const Pagination = ({ itemsCount, pageSize, onPageChange, currentPage }) => {
   // console.log('currentPage', currentPage);

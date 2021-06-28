@@ -1,19 +1,15 @@
 import React, { Component } from "react";
-
-import { Link } from "react-router-dom";
-import { getGenres } from "../services/genreService";
-import { getMovies, deleteMovie } from "../services/movieService";
-
-import "./Movie.css";
-
 import Pagination from "./common/pagination_solution"; // import class_name
 import ListGroup from "./common/listgroup";
 import MovieTable from "./MovieTable";
-import _ from "lodash";
 import Search from "./common/search";
-
+import _ from "lodash";
+import { Link } from "react-router-dom";
+import { getGenres } from "../services/genreService";
+import { getMovies, deleteMovie } from "../services/movieService";
 import { paginate } from "../utils/paginate"; // import { function_name }
 import { toast } from "react-toastify";
+import "./Movie.css";
 
 class Movies extends Component {
   state = {
@@ -134,7 +130,6 @@ class Movies extends Component {
       pageSize,
       currentGenre,
       sortColume,
-      searchQuery,
     } = this.state;
 
     console.log("allMovies", allMovies);
